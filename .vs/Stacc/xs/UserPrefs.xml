@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{B046129A-F6C7-44EB-BA65-C9CF356DAF4D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/AccountView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Pages/AccountDisplay.razor" Line="62" Column="6" />
+      <File FileName="Pages/AccountDisplay.razor" Line="65" Column="6" />
       <File FileName="Models/Ticker.cs" Line="1" Column="1" />
       <File FileName="Models/Coin.cs" Line="1" Column="1" />
       <File FileName="Models/AccountView.cs" Line="20" Column="37" />
+      <File FileName="Program.cs" Line="35" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,12 +13,11 @@
           <Node name="Stacc" expanded="True">
             <Node name="Stacc" expanded="True">
               <Node name="Data" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="AccountView.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Pages" expanded="True" />
               <Node name="Shared" expanded="True" />
               <Node name="wwwroot" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>

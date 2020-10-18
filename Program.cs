@@ -32,7 +32,7 @@ namespace Stacc
             {
                 if (coin.symbol.ToUpper().Equals(name.ToUpper()))
                 {
-                    Console.WriteLine(coin.id);
+                   
                     return coin.id;
                 }
             }
