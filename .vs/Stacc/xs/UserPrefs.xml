@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{B046129A-F6C7-44EB-BA65-C9CF356DAF4D}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/AccountView.cs">
+    <Files>
+      <File FileName="Pages/AccountDisplay.razor" Line="62" Column="6" />
+      <File FileName="Models/Ticker.cs" Line="1" Column="1" />
+      <File FileName="Models/Coin.cs" Line="1" Column="1" />
+      <File FileName="Models/AccountView.cs" Line="20" Column="37" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Stacc" expanded="True">
+            <Node name="Stacc" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="AccountView.cs" selected="True" />
+              </Node>
+              <Node name="Pages" expanded="True" />
+              <Node name="Shared" expanded="True" />
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Stacc PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

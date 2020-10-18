@@ -1,0 +1,68 @@
+﻿@page "/accountdisplay"
+
+<h1>Accounts</h1>
+
+<table class="table">
+    <thead>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                <text> Account </text>
+            </th>
+            <th>
+                <text> Currency </text>
+            </th>
+            <th>
+                <text> Amount </text>
+
+            </th>
+            <th>
+                <text> Value </text>
+
+            </th>
+        </tr>
+
+        @foreach (var account in accounts)
+        {
+
+    <tr>
+        <th>
+            <text>  @account.name </text>
+        </th>
+        <th>
+            <text> @account.currency </text>
+        </th>
+        <th>
+            <text> @double.Parse(account.amount).ToString("0.#######") </text>
+        </th>
+        <th>
+            <text> @double.Parse(@account.value.ToString("0.00")) USD </text>
+
+        </th>
+    </tr>
+           
+        }
+        </tbody>
+</table>
+
+
+<button class="btn btn-primary" @onclick="sortByValue">Sort by value </button>
+
+
+@code {
+    List<Models.AccountView> accounts = Program.accountView;
+
+    private void sortByValue()
+    {
+        accounts = Program.accountView.OrderByDescending(o => o.value).ToList();
+    }
+    //Her var planen å lage en findByDate form med date som input eller select. Så ble det sorter med ticks etter dato.
+    //Men ettersom jeg begynte på konkurransen sent søndag ble ikke dette gjort :( Skulle begynt tidligere!
+    private void findByDate(DateTime date)
+    {
+        accounts  = Program.accountView.Where(o => o.tickers.Any(x => x.timestamp.Equals(date))).ToList();
+    }
+
+
+}

@@ -1,0 +1,105 @@
+﻿@page "/fetchdata"
+
+@using Stacc.Data
+@using C1.Chart
+@using C1.Blazor.Chart
+
+<h1>Graf</h1>
+
+<p>This graph shows value of account by date </p>
+@{  List<Models.AccountView> acc = Program.accountView; }
+<Dropdown TItem="string" OnSelected="@OnSelected">
+    <InitialTip>Choose account</InitialTip>
+    <ChildContent>
+        @foreach (var acc1 in acc)
+        {
+            <DropdownListItem Item="@acc1.name"> @acc1.name</DropdownListItem>
+          
+        }
+
+    </ChildContent>
+</Dropdown>
+@if(acc1 != null) { 
+<table class="table">
+    <thead>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                <text> Account </text>
+            </th>
+            <th>
+                <text> Currency </text>
+            </th>
+            <th>
+                <text> Amount </text>
+
+            </th>
+            <th>
+                <text> Value </text>
+
+            </th>
+        </tr>
+
+            <tr>
+                <th>
+                    <text>  @acc1.name </text>
+                </th>
+                <th>
+                    <text> @acc1.currency </text>
+                </th>
+                <th>
+                    <text> @double.Parse(acc1.amount).ToString("0.#######") </text>
+                </th>
+                <th>
+                    <text> @double.Parse(@acc1.value.ToString("0.00")) USD </text>
+
+                </th>
+            </tr>
+
+    </tbody>
+</table>
+}
+@if (accountsGraph == null)
+{
+<p><em>Loading...</em></p> }
+else
+{
+<FlexChart ItemsSource="accountsGraph" BindingX="timestamp" ChartType="ChartType.SplineSymbols" HeaderContent="Graph" HeaderStyle="font-size:24px">
+    <SeriesCollection>
+        <Series Binding="value"/>
+    </SeriesCollection>
+    <AxisCollection>
+        <Axis AxisType="AxisType.X" Position="Position.Bottom" AxisLine="false" Title="Her skal datoene stå, men gikk tom for tid" Format="MMM-d" MajorTickMarks="TickMark.None" />
+        <Axis AxisType="AxisType.Y" Position="Position.Left" Title="Value" AxisLine="false" MajorTickMarks="TickMark.None" MajorGrid="true" />
+    </AxisCollection>
+</FlexChart>}
+
+@code {
+    Models.AccountView acc1 = null;
+    List<Models.AccountView> acc = Program.accountView;
+    String selected = Program.accountView[0].name;
+    private void OnSelected(string selection)
+    {
+        selected = selection;
+        OnInitializedAsync();
+
+    }
+
+    private List<Models.tickers> tickers;
+
+    private List<Models.AccountGraph> accountsGraph;
+
+    protected override async Task OnInitializedAsync()
+    {
+        acc1 = acc.AsEnumerable().Where(x => x.name.ToUpper().Equals(selected.ToUpper())).First();
+
+        accountsGraph = acc1.tickers.AsEnumerable().ToList().ConvertAll(x => new Models.AccountGraph
+        {
+            timestamp = x.timestamp.Date,
+            value = x.converted_last.usd*double.Parse(acc1.amount)
+        });
+
+    }
+}
+ 
